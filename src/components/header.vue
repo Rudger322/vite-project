@@ -21,9 +21,28 @@ const toggleMenu = () => {
     </div>
     <div v-if="isMenuOpen" class="header_menu">
       <ul>
-        <li><a href="#">Пункт 1</a></li>
-        <li><a href="#">Пункт 2</a></li>
-        <li><a href="#">Пункт 3</a></li>
+        <h3 class="header_menu_subtitle">MAN</h3>
+        <li><a href="#">Accessories</a></li>
+        <li><a href="#">Bags</a></li>
+        <li><a href="#">Denim</a></li>
+        <li><a href="#">T-Shirts</a></li>
+      </ul>
+      <ul>
+        <h3 class="header_menu_subtitle">WOMAN</h3>
+        <li><a href="#">Accessories</a></li>
+        <li><a href="#">Jackets & Coats</a></li>
+        <li><a href="#">Polos</a></li>
+        <li><a href="#">T-Shirts</a></li>
+        <li><a href="#">Shirts</a></li>
+      </ul>
+      <ul>
+        <h3 class="header_menu_subtitle">KIDS</h3>
+        <li><a href="#">Accessories</a></li>
+        <li><a href="#">Jackets & Coats</a></li>
+        <li><a href="#">Polos</a></li>
+        <li><a href="#">T-Shirts</a></li>
+        <li><a href="#">Shirts</a></li>
+        <li><a href="#">Bags</a></li>
       </ul>
     </div>
 </header>
@@ -59,25 +78,34 @@ header{
     align-items: center;
 }
 .header_menu {
+  
   position: absolute;
   top: 75px;
   right: 0;
   background-color: #FFFFFF;
   color: white;
   padding: 1rem;
+  padding-top: 37px;
+  height: 764px;
   width: 232px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
   z-index: 100;
 }
-
+.header_menu_subtitle{
+  color: #F16D7F;
+  margin-left: 33px;
+  margin-bottom: 12px;
+}
 .header_menu ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  
 }
 
 .header_menu li {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  margin-left: 54px;
 }
 
 .header_menu a {

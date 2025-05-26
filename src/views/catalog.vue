@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted } from 'vue'
 import { useProductStore } from '../api/productstore'
+import {getCatalogData} from '../api/fakeApi';
 
 const store = useProductStore()
 
@@ -16,8 +17,20 @@ onMounted(() => {
     </div>
     <div class="catalog">
     <div class="filters">
-      <button disabled>Фильтр 1</button>
-      <button disabled>Фильтр 2</button>
+      <div class="filters_left">
+        <a href="filters_left_text">FILTER</a>
+      </div>
+      <div class="filters_right">
+        <div class="filters_right_point">
+            TRENDING NOW
+        </div>
+        <div class="filters_right_point">
+            SIZE 
+        </div>
+        <div class="filters_right_point">
+            PRICE
+        </div>
+      </div>
     </div>
 
     <div class="produc">
@@ -65,6 +78,36 @@ onMounted(() => {
 }
 .filters{
     margin-top: 52px;
+    display: flex;
+    width: 100vw;
+    justify-content: space-around;
+}
+.filters_left{
+    font-family: 'Lato-Regular';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+
+    color: #000000;
+}
+.filters_right{
+    display: flex;
+    width: 300px;
+    justify-content: space-between;
+}
+.filters_right_point{
+
+    font-family: 'Lato-Regular';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+
+
+    color: #6F6E6E;
+
+
 }
 .catalog{
     display: flex;
@@ -133,7 +176,6 @@ onMounted(() => {
     background-color: #EBEBEB;
     display: flex;
     gap: 20px;
-    border-style: dashed;
     padding: 15px;
     
 }
