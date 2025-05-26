@@ -1,12 +1,12 @@
 <script setup>
-import { onMounted } from 'vue'
-import { useProductStore } from '../api/productstore'
-import {getCatalogData} from '../api/fakeApi';
+import { ref, onMounted } from 'vue'
+import {useCatalogStore} from '../stores/catalog'
 
-const store = useProductStore()
+const store = useCatalogStore()
 
-onMounted(() => {
-  store.fetchProducts()
+onMounted(async() => {
+  await store.fetchProducts()
+  console.log(store.products)
 })
 </script>
 

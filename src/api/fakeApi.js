@@ -5,7 +5,7 @@ import api from './axios';
 export const getHomeData = () => api.get('/products?limit=6');
 
 // Каталог — список всех товаров
-export const getCatalogData = () => api.get('/products');
+export const getCatalogData = (limit = 10) => api.get(`/products?limit=${limit}`);
 
 // Один товар по ID
 export const getProductData = (id) => api.get(`/products/${id}`);
