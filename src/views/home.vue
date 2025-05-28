@@ -44,7 +44,7 @@ onMounted(async () => {
                 <p class="product-card-price">{{ product.price }}</p>
             </router-link>
         </div>
-        <button class="products-button">Browse All Product</button>
+        <router-link to="/catalog" class="products-button">Browse All Product</router-link>
     </div>
 </template>
 
@@ -128,6 +128,7 @@ onMounted(async () => {
 }
 .offers_wrap_img::after {
   content: '';
+  z-index: 0;
   position: absolute;
   inset: 0;
   background-color: rgba(33, 22, 22, 0.7);
@@ -217,6 +218,17 @@ onMounted(async () => {
     width: 212px;
     height: 48px;
     background-color: #F16D7F;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: 'Lato-Light';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
+
     color: #FFFFFF;
 }
 @media screen and (max-width: 1024px) {

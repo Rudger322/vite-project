@@ -43,6 +43,7 @@
 .subscribe-wrap-left-img{
     width: 144px;
     height: 144px;
+    border-radius: 50%;
 }
 .subscribe-wrap-left-description{
     text-align: center;

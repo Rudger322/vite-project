@@ -16,8 +16,13 @@ const toggleMenu = () => {
     </div>
     <div class="header_right">
         <img src="../assets/menu.svg" alt="Logo" class="header_right_menu" @click="toggleMenu"/>
-        <img src="../assets/registration.svg" alt="Logo" class="header_right_reg"/>
-        <img src="../assets/kart.svg" alt="Logo" class="header_right_kart"/>
+        <router-link to="/registration">
+          <img src="../assets/registration.svg" alt="Logo" class="header_right_reg"/>
+        </router-link>
+        <router-link to="/kart">
+          <img src="../assets/kart.svg" alt="Logo" class="header_right_kart"/>
+        </router-link>
+        
     </div>
     <div v-if="isMenuOpen" class="header_menu">
       <ul>
@@ -78,9 +83,10 @@ header{
     align-items: center;
 }
 .header_menu {
-  
+  z-index: 10000;
   position: absolute;
   top: 75px;
+  z-index: 200;
   right: 0;
   background-color: #FFFFFF;
   color: white;
@@ -89,7 +95,6 @@ header{
   height: 764px;
   width: 232px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  z-index: 100;
 }
 .header_menu_subtitle{
   color: #F16D7F;

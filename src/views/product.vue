@@ -1,60 +1,71 @@
 <script setup>
-import GetProduct from '../api/product.js';
 import {ref, onMounted} from 'vue';
 import { useRoute } from 'vue-router';
-import { useProductStore } from '../api/productstore'
+import { useProductStore } from '../stores/product.js';
+import { useCatalogStore } from '../stores/catalog.js';
+import {useCartStore} from '../stores/cart.js'
+const cartStore = useCartStore();
 
+const catalog = useCatalogStore();
 const products = ref(null);
 const route = useRoute();
 const store = useProductStore()
 
+async function runScript() {
+    await cartStore.addToCart({id:route.params.id});
+    console.log(cartStore.cart)
+}
 onMounted(async () => {
     const id = route.params.id;
-    store.fetchProducts()
     try {
-        products.value = await GetProduct(id);
-        console.log(products.value);
+        await catalog.fetchProducts()
+        await store.fetchProduct(id)
     } catch (error) {
         console.error('Ошибка загрузки продуктов:', error.message);
     }
 });
 
+
+</script>
+<script>
+
+
 </script>
 <template>
-<div v-if="products" class="wrap">
+<div v-if="store.product" class="wrap">
     <div class="nav">
         <h1 class="nav-title pink">NEW ARRIVALS </h1>
         <div class="nav-pos">HOME / MEN / <span class="pink">NEW ARRIVALS</span> </div>
     </div>
     <div class="carousel">
-        <img :src="products.image" :alt="products.title" class="carousel-img">
+        <img :src="store.product.image" :alt="store.product.title" class="carousel-img">
     </div>
 
     <div class="addblock">
-        <h2 class="addblock-category">{{products.category}}</h2>
+        <h2 class="addblock-category">{{store.product.category}}</h2>
         <div class="addblock-pinqline"></div>
-        <h1 class="addblock-title">{{products.title}}</h1>
-        <p class="addblock-description">{{products.description}}</p>
-        <div class="addblock-price">${{products.price}}</div>
+        <h1 class="addblock-title">{{store.product.title}}</h1>
+        <p class="addblock-description">{{store.product.description}}</p>
+        <div class="addblock-price">${{store.product.price}}</div>
         <hr>
         <div class="addblock-choose">
             <div class="addblock-choose-color choose">CHOOSE COLOR</div>
             <div class="addblock-choose-size choose">CHOOSE SIZE </div>
             <div class="addblock-choose-quantity choose">QUANTITY</div>
         </div>
-        <button class="addblock-button">
+        <button class="addblock-button" @click = "runScript">
             <img src="../assets/pinqkart.svg" alt="">
             Add to Cart
         </button>
     </div>
     <div class="produc">
-      <router-link v-for="product in store.paginatedProducts.slice(0,3)" :key="product.id" :to="`/product/${product.id}`" class="product-card">
+      <router-link v-for="product in catalog.paginatedProducts.slice(0,3)" :key="product.id" :to="`/product/${product.id}`" class="product-card">
         <img :src="product.image" :alt="product.title" class="product-card-img">
         <h3 class="product-card-title">{{ product.title }}</h3>
         <p class="product-card-description">{{ product.description }}</p>
         <p class="product-card-price">{{ product.price }}</p>
       </router-link>
-    </div>
+    </div> 
 </div>
 
 <div v-else>

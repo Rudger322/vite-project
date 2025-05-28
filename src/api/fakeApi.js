@@ -17,22 +17,8 @@ export const getCartData = (cartId = 1) => api.get(`/carts/${cartId}`);
 export const registerUser = (formData) => {
   return api.post('/users', {
     email: formData.email,
-    username: formData.username,
     password: formData.password,
-    name: {
-      firstname: formData.firstName,
-      lastname: formData.lastName,
-    },
-    address: {
-      city: 'some city',
-      street: 'some street',
-      number: 3,
-      zipcode: '12345',
-      geolocation: {
-        lat: '0',
-        long: '0',
-      },
-    },
-    phone: formData.phone,
+    username: formData.firstName + formData.lastName
   });
 };
+

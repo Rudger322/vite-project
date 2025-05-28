@@ -26,5 +26,15 @@ export const useProductStore = defineStore('product', {
       this.product = null;
       this.error = null;
     },
+    async fetchAddProducts(){
+        try {
+        const res = await api.get(`/products`);
+        this.product = res.data;
+      } catch (e) {
+        this.error = e.message || 'Ошибка загрузки товара';
+      } finally {
+        this.isLoading = false;
+      }
+    },
   },
 });
