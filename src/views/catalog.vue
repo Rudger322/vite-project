@@ -119,8 +119,8 @@ onMounted(async() => {
     margin-top: 64px;
     margin-bottom: 48px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    width: 1140px;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    max-width: 1140px;
     gap: 30px;
 }
 .product-card{
@@ -187,5 +187,16 @@ onMounted(async() => {
 }
 .pag-button:hover{
     color: #EF5B70;
+}
+
+@media screen and (max-width: 1024px) {
+  .produc {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (max-width: 767px) {
+  .produc {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

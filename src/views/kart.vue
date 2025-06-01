@@ -181,4 +181,36 @@ hr{
     background-color: #F16D7F;
     border: none;
 }
+@media screen and (max-width: 1024px) {
+  .kart {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .kart-order{
+    display: flex;
+    gap: 60px;
+  }
+  .kart-products{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .kart-products-prod{
+    margin: 0;
+    margin-bottom: 30px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .kart {
+    max-width: 100vw;
+    flex-direction: column;
+    gap: 30px;
+
+  }
+  .kart-order{
+    display: block;
+    gap: 60px;
+  }
+}
 </style>
